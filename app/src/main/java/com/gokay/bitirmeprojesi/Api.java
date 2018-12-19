@@ -54,10 +54,9 @@ public interface Api {
                             @Field("email") String email,
                             @Field("sifre") String sifre);
 
-    
-    @FormUrlEncoded
+
     @GET("login")
-    Call<Kullanici> girisYap(@Field("email") String email,
-                             @Field("sifre") String sifre);
+    Call<Kullanici> girisYap(@Query("email") String email,
+                             @Query("sifre") String sifre);
 
 }

@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.gokay.bitirmeprojesi.M.Kullanici;
 import com.gokay.bitirmeprojesi.M.URL;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,20 +41,21 @@ public class LoginActivity extends AppCompatActivity {
 
     private void giris(){
         URL url=new URL();
+        Gson gson=new GsonBuilder().setLenient().create();
         Retrofit retrofit=new Retrofit.Builder()
                 .baseUrl(url.getBaseUrl())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         Api api=retrofit.create(Api.class);
         Call<Kullanici> call=api.girisYap(email.getText().toString(),sifre.getText().toString());
         call.enqueue(new Callback<Kullanici>() {
             @Override
             public void onResponse(Call<Kullanici> call, Response<Kullanici> response) {
-                if(response.code()==200){
+                if(response.code()==200 || response.message()=="success"){
                     Toast.makeText(getApplicationContext(),"Başarılı!",Toast.LENGTH_LONG).show();
                     Log.d("Başarılı: ","Giriş işlemi başarılı");
                 }
-                else if(response.code()==403){
+                else if(response.code()==403 || response.message()=="forbidden"){
                     Toast.makeText(getApplicationContext(),"Başarısız!",Toast.LENGTH_LONG).show();
                     Log.d("Başarısız: ","Giriş işlemi başarısız");
                 }
@@ -61,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Kullanici> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"errorrrr",Toast.LENGTH_LONG).show();
-                Log.d("tag3","error");
+                Log.d("tag3",t.getMessage());
 
             }
         });
