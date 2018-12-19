@@ -53,4 +53,11 @@ public interface Api {
                             @Field("soyad") String soyad,
                             @Field("email") String email,
                             @Field("sifre") String sifre);
+
+    
+    @FormUrlEncoded
+    @GET("login")
+    Call<Kullanici> girisYap(@Field("email") String email,
+                             @Field("sifre") String sifre);
+
 }
