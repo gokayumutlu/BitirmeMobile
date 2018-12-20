@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void giris(){
         URL url=new URL();
+        final LoginStatus ls=new LoginStatus();
         Gson gson=new GsonBuilder().setLenient().create();
         Retrofit retrofit=new Retrofit.Builder()
                 .baseUrl(url.getBaseUrl())
@@ -54,10 +55,17 @@ public class LoginActivity extends AppCompatActivity {
                 if(response.code()==200 || response.message()=="success"){
                     Toast.makeText(getApplicationContext(),"Başarılı!",Toast.LENGTH_LONG).show();
                     Log.d("Başarılı: ","Giriş işlemi başarılı");
+                    ls.setUserEmail(email.getText().toString());
+                    ls.setLoginStatus(getApplicationContext(),true);
+                    ls.setUserEmail(email.getText().toString());
+                    ls.setUser(getApplicationContext(),email.getText().toString());
                 }
                 else if(response.code()==403 || response.message()=="forbidden"){
                     Toast.makeText(getApplicationContext(),"Başarısız!",Toast.LENGTH_LONG).show();
                     Log.d("Başarısız: ","Giriş işlemi başarısız");
+
+                    ls.setLoginStatus(getApplicationContext(),false);
+
                 }
             }
 
@@ -66,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"errorrrr",Toast.LENGTH_LONG).show();
                 Log.d("tag3",t.getMessage());
 
+                ls.setLoginStatus(getApplicationContext(),false);
             }
         });
     }

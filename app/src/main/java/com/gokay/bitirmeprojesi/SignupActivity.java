@@ -45,19 +45,12 @@ public class SignupActivity extends AppCompatActivity {
 
 
     private void submit(){
-        //Kullanici k1=new Kullanici(ad.getText().toString(),soyad.getText().toString(),email.getText().toString(),sifre.getText().toString());
         URL url=new URL();
         Retrofit retrofit=new Retrofit.Builder()
                 .baseUrl(url.getBaseUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Api api=retrofit.create(Api.class);
-        /*
-        RequestBody req_ad=RequestBody.create(null,ad.getText().toString());
-        RequestBody req_soyad=RequestBody.create(null,soyad.getText().toString());
-        RequestBody req_email=RequestBody.create(null,email.getText().toString());
-        RequestBody req_sifre=RequestBody.create(null,sifre.getText().toString());
-        */
         Call<Kullanici> call=api.kayitol(ad.getText().toString(),soyad.getText().toString(),email.getText().toString(),sifre.getText().toString());
         call.enqueue(new Callback<Kullanici>() {
             @Override
