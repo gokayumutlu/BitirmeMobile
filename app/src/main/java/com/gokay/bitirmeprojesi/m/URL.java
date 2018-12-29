@@ -1,4 +1,4 @@
-package com.gokay.bitirmeprojesi.M;
+package com.gokay.bitirmeprojesi.m;
 
 public class URL {
     private String baseUrl="https://bitirme-projesi-219000.appspot.com/";

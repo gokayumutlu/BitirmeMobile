@@ -3,11 +3,11 @@ package com.gokay.bitirmeprojesi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class OgrenciListesiActivity extends AppCompatActivity {
+public class Ogrenciler extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ogrenci_listesi);
+        setContentView(R.layout.activity_ogrenciler);
     }
 }

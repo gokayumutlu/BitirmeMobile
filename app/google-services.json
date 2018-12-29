@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "768666940720-vmm7nmmd1avfevpvsidbdpgcuio9rr54.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gokay.bitirmeprojesi",
+            "certificate_hash": "9029a16e968c125fea6ad4be051e1f5b66b1fad5"
+          }
+        },
+        {
           "client_id": "768666940720-fkd2tu5h3e04eflcf957el8jf4jsfuma.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768666940720-fkd2tu5h3e04eflcf957el8jf4jsfuma.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

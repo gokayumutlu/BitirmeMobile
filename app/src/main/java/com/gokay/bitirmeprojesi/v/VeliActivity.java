@@ -1,7 +1,9 @@
-package com.gokay.bitirmeprojesi;
+package com.gokay.bitirmeprojesi.v;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.gokay.bitirmeprojesi.R;
 
 public class VeliActivity extends AppCompatActivity {
 

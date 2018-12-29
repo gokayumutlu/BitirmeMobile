@@ -1,4 +1,4 @@
-package com.gokay.bitirmeprojesi.M;
+package com.gokay.bitirmeprojesi.m;
 
 public class Kullanici {
     private String ad;

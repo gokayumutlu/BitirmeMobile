@@ -23,4 +23,7 @@
     <string name="signup_soyad">Soyad</string>
     <string name="signup_email">Email</string>
     <string name="signup_password">Şifre</string>
+    <string name="title_activity_chat">chat</string>
+    <string name="cikis_yap">Çıkış Yap</string>
+    <string name="signup_sifre">Sifre</string>
 </resources>
