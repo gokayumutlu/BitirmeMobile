@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                 .writeTimeout(60,TimeUnit.SECONDS)
                 .build();
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl(url.getmBaseUrl())
+                .baseUrl(url.getBaseUrl())
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
