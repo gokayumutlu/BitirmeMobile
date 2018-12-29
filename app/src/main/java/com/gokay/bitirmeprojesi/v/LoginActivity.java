@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email,sifre;
     private Button girisButton;
     private String user_id;
-    private String email2;
+    private String alici_email;
     //TODO Progress Dialog Ekle
 
     //Firebase
@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         final LoginStatus ls=new LoginStatus();
         Gson gson=new GsonBuilder().setLenient().create();
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl(url.getBaseUrl())
+                .baseUrl(url.getUrl1())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         Api api=retrofit.create(Api.class);
@@ -119,14 +119,15 @@ public class LoginActivity extends AppCompatActivity {
     private void emailTakas(String emaill){
         URL url=new URL();
         Gson gson=new GsonBuilder().setLenient().create();
+        /*
         OkHttpClient client=new OkHttpClient().newBuilder()
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60,TimeUnit.SECONDS)
                 .writeTimeout(60,TimeUnit.SECONDS)
                 .build();
+                */
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl(url.getBaseUrl())
-                .client(client)
+                .baseUrl(url.getUrl1())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         Api api=retrofit.create(Api.class);
@@ -135,7 +136,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Kullanici> call, Response<Kullanici> response) {
                 Log.d("tag5",response.message());
-                email2=response.message();
+                alici_email=response.body().getEmail();
+                Log.d("asdqwe",alici_email);
+
             }
 
             @Override
@@ -155,6 +158,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent main= new Intent(LoginActivity.this, MainActivity.class);
                     //main.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     main.putExtra("user_id",user_id);
+                    main.putExtra("alici_email",alici_email);
                     startActivity(main);
                     finish();
                 }

@@ -13,6 +13,10 @@ public class Kullanici {
         this.sifre=sifre;
     }
 
+    public Kullanici(){
+
+    }
+
     public String getAd() {
         return ad;
     }

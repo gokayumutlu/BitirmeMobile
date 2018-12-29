@@ -97,7 +97,7 @@ public class SignupActivity extends AppCompatActivity {
     private void submit(){
         URL url=new URL();
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl(url.getBaseUrl())
+                .baseUrl(url.getUrl1())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Api api=retrofit.create(Api.class);
