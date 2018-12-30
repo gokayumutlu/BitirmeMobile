@@ -1,6 +1,7 @@
 package com.gokay.bitirmeprojesi;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout ll;
     private String user_id;
     private String alici_email;
-    private String alici_id;
+    public String alici_id;
     private String alici;
 
     //Firabase
@@ -44,19 +45,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        user_id=getIntent().getStringExtra("user_id");
+        mAuth = FirebaseAuth.getInstance();
+        //user_id=getIntent().getStringExtra("user_id");
+        user_id=mAuth.getCurrentUser().getUid();
         alici_email=getIntent().getStringExtra("alici_email");
-        Log.d("tag main: ",alici_email);
-        alici_id=getIdByEmail(alici_email);
+        //Log.d("tag main: ",alici_email);
+        //alici_id=getIdByEmail(alici_email);
+        //Log.d("tag",alici_id);
 
         ll=findViewById(R.id.linear_message);
+
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent messageIntent=new Intent(MainActivity.this,ChatActivity.class);
-                messageIntent.putExtra("user_id",user_id);
-                messageIntent.putExtra("alici_id",alici_id);
-                startActivity(messageIntent);
+                Task myTask=new Task();
+                myTask.execute(alici_email);
+                try{
+                    alici_id=myTask.get();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }finally {
+                    intent();
+                }
+
             }
         });
 
@@ -73,12 +84,18 @@ public class MainActivity extends AppCompatActivity {
         }
         */
 
-        mAuth = FirebaseAuth.getInstance();
-
         toolbar=findViewById(R.id.main_app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Anaokulu Öğrenci Takip Sistemi");
 
+    }
+    public void intent(){
+        Intent messageIntent=new Intent(MainActivity.this,ChatActivity.class);
+        messageIntent.putExtra("user_id",user_id);
+        messageIntent.putExtra("alici_id",alici_id);
+        //Log.d("tag1",alici_id);
+        //Log.d("tag2",user_id);
+        startActivity(messageIntent);
     }
 
     @Override
@@ -125,31 +142,32 @@ public class MainActivity extends AppCompatActivity {
     public String getIdByEmail(final String email){
 
         database=FirebaseDatabase.getInstance();
-        Query qref=database.getReference("Users").orderByChild("email").equalTo("farkliemail@outlook.com");
+        Query qref=database.getReference("Users").orderByChild("email").equalTo(email);
 
         qref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Log.d("taggelenemail",email);
+                //Log.d("taggelenemail",email);
                 Kullanici kullanici=dataSnapshot.getValue(Kullanici.class);
-                Log.d("tagoldu",dataSnapshot.getKey());
+                //Log.d("tagoldu",dataSnapshot.getKey());
                 alici=dataSnapshot.getKey();
+                //Log.d("tag",alici);
 
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Log.d("tagchanged",dataSnapshot.getKey());
+                //Log.d("tagchanged",dataSnapshot.getKey());
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                Log.d("tagremoved",dataSnapshot.getKey());
+                //Log.d("tagremoved",dataSnapshot.getKey());
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Log.d("tagmoved",dataSnapshot.getKey());
+                //Log.d("tagmoved",dataSnapshot.getKey());
             }
 
             @Override
@@ -159,4 +177,5 @@ public class MainActivity extends AppCompatActivity {
         });
         return alici;
     }
+
 }

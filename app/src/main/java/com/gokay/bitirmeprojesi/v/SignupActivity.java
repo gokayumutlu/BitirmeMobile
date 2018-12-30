@@ -153,7 +153,7 @@ public class SignupActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Intent loginIntent=new Intent(SignupActivity.this, LoginActivity.class);
-                                loginIntent.putExtra("user_id",uid);
+                                //loginIntent.putExtra("user_id",uid);
                                 startActivity(loginIntent);
                                 finish();
                             }

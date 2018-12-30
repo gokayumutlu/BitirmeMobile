@@ -21,6 +21,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -42,12 +44,14 @@ public class LoginActivity extends AppCompatActivity {
 
     //Firebase
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        user_id=getIntent().getStringExtra("user_id");
+        //user_id=getIntent().getStringExtra("user_id");
         //Firebase
         mAuth = FirebaseAuth.getInstance();
 
@@ -135,16 +139,16 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<Kullanici>() {
             @Override
             public void onResponse(Call<Kullanici> call, Response<Kullanici> response) {
-                Log.d("tag5",response.message());
+                //Log.d("tag5",response.message());
                 alici_email=response.body().getEmail();
-                Log.d("asdqwe",alici_email);
+                //Log.d("asdqwe",alici_email);
 
             }
 
             @Override
             public void onFailure(Call<Kullanici> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"errorrrrrr",Toast.LENGTH_LONG).show();
-                Log.d("tag4",t.getMessage());
+                //Log.d("tag4",t.getMessage());
             }
         });
     }
@@ -157,7 +161,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Intent main= new Intent(LoginActivity.this, MainActivity.class);
                     //main.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    main.putExtra("user_id",user_id);
+                    //main.putExtra("user_id",user_id);
                     main.putExtra("alici_email",alici_email);
                     startActivity(main);
                     finish();
@@ -167,6 +171,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    public void getId(String email){
+
     }
 
 }
