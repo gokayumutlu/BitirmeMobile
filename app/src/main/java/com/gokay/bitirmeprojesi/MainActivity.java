@@ -1,6 +1,9 @@
 package com.gokay.bitirmeprojesi;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,38 +29,102 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class MainActivity extends AppCompatActivity {
+
+
+public class MainActivity extends AppCompatActivity{
 
     private Toolbar toolbar;
     private LinearLayout ll;
     private String user_id;
-    private String alici_email;
+    private String alici_name;
     public String alici_id;
     private String alici;
+    private String et;
+    private String g_email;
+    private int login_status;
+    public int i;
+
+    //Kolaylık olması açısından öğretmen emaili ve firebase uid'si sağlandı.
+    private String amail="farkliemail@outlook.com";
+    private String aid="EBlKe7Zo3eVu3vIEkB8cNBdTp7s1";
+    private String alici_ad="farklı email";
+    //2
+    private String amail2="nedenneden@gmail.com";
+    private String aid2="ArsnUnmf2tYGEHhr9Zl0MUAIxJ62";
+    private String alici_ad2="neden çalışıyor";
 
     //Firabase
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private DatabaseReference ref;
 
+
+    public static final String MyPREFERENCES = "MyPrefs" ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
-        //user_id=getIntent().getStringExtra("user_id");
-        user_id=mAuth.getCurrentUser().getUid();
-        alici_email=getIntent().getStringExtra("alici_email");
-        //Log.d("tag main: ",alici_email);
-        //alici_id=getIdByEmail(alici_email);
-        //Log.d("tag",alici_id);
+        SharedPreferences sharedPreferences=getSharedPreferences(MyPREFERENCES,Context.MODE_PRIVATE);
+        g_email=sharedPreferences.getString("email","rong");
+        //g_email=getIntent().getStringExtra("current_email");
+
+        if (g_email.equals(amail)) {
+            alici_id=aid2;
+            alici_name=alici_ad2;
+        }
+        else if(g_email.equals(amail2)){
+            alici_id=aid;
+            alici_name=alici_ad;
+        }
+        else{
+            Log.d("tag_main_email_error","email error");
+        }
+
+
+
+
+        //login_status=getIntent().getIntExtra("login_status");
+
+
+        //login_status=0;
+
 
         ll=findViewById(R.id.linear_message);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        user_id=mAuth.getCurrentUser().getUid();
 
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent chat=new Intent(MainActivity.this,ChatActivity.class);
+                chat.putExtra("alici_id",alici_id);
+                chat.putExtra("gonderen_id",user_id);
+                chat.putExtra("alici_ad",alici_name);
+                startActivity(chat);
+
+            }
+        });
+
+
+        /*
+        ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent messageIntent=new Intent(MainActivity.this,ChatActivity.class);
+                messageIntent.putExtra("user_id",user_id);
+                messageIntent.putExtra("alici_id",alici_id);
+                //messageIntent.putExtra("alici_id2",et);
+                Log.d("tag_user",user_id);
+                //Log.d("tag_alici",et);
+                //Log.d("tag_alici",alici_id);
+                startActivity(messageIntent);
+
                 Task myTask=new Task();
                 myTask.execute(alici_email);
                 try{
@@ -68,9 +135,10 @@ public class MainActivity extends AppCompatActivity {
                     intent();
                 }
 
+
             }
         });
-
+         */
 
         //TODO
         //Firebase haricinde kendi login işlemini kontrol et
@@ -89,14 +157,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Anaokulu Öğrenci Takip Sistemi");
 
     }
-    public void intent(){
-        Intent messageIntent=new Intent(MainActivity.this,ChatActivity.class);
-        messageIntent.putExtra("user_id",user_id);
-        messageIntent.putExtra("alici_id",alici_id);
-        //Log.d("tag1",alici_id);
-        //Log.d("tag2",user_id);
-        startActivity(messageIntent);
-    }
+
+
+
 
     @Override
     public void onStart() {
@@ -147,11 +210,11 @@ public class MainActivity extends AppCompatActivity {
         qref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                //Log.d("taggelenemail",email);
+                Log.d("taggelenemail",email);
                 Kullanici kullanici=dataSnapshot.getValue(Kullanici.class);
-                //Log.d("tagoldu",dataSnapshot.getKey());
+                Log.d("tagoldu",dataSnapshot.getKey());
                 alici=dataSnapshot.getKey();
-                //Log.d("tag",alici);
+                Log.d("tag",alici);
 
             }
 
@@ -178,4 +241,71 @@ public class MainActivity extends AppCompatActivity {
         return alici;
     }
 
+
+
+    /*
+    public void func(final String aaa){
+
+                Intent messageIntent=new Intent(MainActivity.this,ChatActivity.class);
+                messageIntent.putExtra("user_id",user_id);
+                messageIntent.putExtra("alici_id",aaa);
+                //messageIntent.putExtra("alici_id2",et);
+                Log.d("tag_user",user_id);
+                //Log.d("tag_alici",et);
+                //Log.d("tag_alici",alici_id);
+    }
+    */
 }
+
+    /*
+    class Async extends AsyncTask<String,String,String>{
+
+        @Override
+        protected String doInBackground(String... strings) {
+            final String email=strings[0];
+            database=FirebaseDatabase.getInstance();
+            Query qref=database.getReference("Users").orderByChild("email").equalTo(email);
+
+            qref.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    Log.d("taggelenemail",email);
+                    Kullanici kullanici=dataSnapshot.getValue(Kullanici.class);
+                    Log.d("tagoldu",dataSnapshot.getKey());
+                    alici=dataSnapshot.getKey();
+                    Log.d("tag",alici);
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    //Log.d("tagchanged",dataSnapshot.getKey());
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                    //Log.d("tagremoved",dataSnapshot.getKey());
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    //Log.d("tagmoved",dataSnapshot.getKey());
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Log.d("tagcancel",databaseError.getDetails());
+                }
+            });
+            return alici;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            Log.d("tag55",s);
+            //func();
+        }
+    }
+    */
+
+
