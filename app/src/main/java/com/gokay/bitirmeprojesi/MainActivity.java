@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity{
 
     private Toolbar toolbar;
     private LinearLayout ll;
+    private LinearLayout medicine_layout;
     private String user_id;
     private String alici_name;
     public String alici_id;
@@ -57,7 +58,6 @@ public class MainActivity extends AppCompatActivity{
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private DatabaseReference ref;
-
 
     public static final String MyPREFERENCES = "MyPrefs" ;
 
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity{
 
 
         ll=findViewById(R.id.linear_message);
-
+        medicine_layout=findViewById(R.id.linear_medicine);
         mAuth = FirebaseAuth.getInstance();
 
         user_id=mAuth.getCurrentUser().getUid();
@@ -109,6 +109,13 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        medicine_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent medicine_layout=new Intent(MainActivity.this,IlacTakip.class);
+                startActivity(medicine_layout);
+            }
+        });
 
         /*
         ll.setOnClickListener(new View.OnClickListener() {

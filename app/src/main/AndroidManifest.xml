@@ -11,18 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".v.LoginActivity" >
+        <activity android:name=".v.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".v.OgrenciListesiActivity">
-
-        </activity>
+        <activity android:name=".v.OgrenciListesiActivity"></activity>
         <activity android:name=".v.SignupActivity" />
         <activity android:name=".v.VeliActivity" />
         <activity android:name=".MainActivity" />
@@ -30,20 +28,16 @@
         <activity
             android:name=".ChatActivity"
             android:label="@string/title_activity_chat"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"></activity>
 
-        </activity>
-
-        <service
-            android:name=".MyFirebaseMessagingS">
+        <service android:name=".MyFirebaseMessagingS">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
-
-
+        <activity android:name=".IlacTakip"
+                    android:parentActivityName=".MainActivity"></activity>
     </application>
-
 
 </manifest>

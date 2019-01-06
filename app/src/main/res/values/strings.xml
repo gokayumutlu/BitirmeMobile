@@ -26,4 +26,8 @@
     <string name="title_activity_chat">chat</string>
     <string name="cikis_yap">Çıkış Yap</string>
     <string name="signup_sifre">Sifre</string>
+    <string name="ilac_adi">İlaç Adı</string>
+    <string name="ilac_dozu">İlacın Dozu</string>
+    <string name="ilac_aciklama">Açıklama</string>
+    <string name="medicine_submit_button">Gönder</string>
 </resources>
