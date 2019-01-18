@@ -1,5 +1,6 @@
 package com.gokay.bitirmeprojesi;
 
+import com.gokay.bitirmeprojesi.m.Ilac;
 import com.gokay.bitirmeprojesi.m.Kullanici;
 import java.util.List;
 
@@ -54,5 +55,24 @@ public interface Api {
 
     @GET("emailtakas")
     Call<Kullanici> emailTakas(@Query("email") String email);
+
+
+    @FormUrlEncoded
+    @POST("ilactakipekle")
+    Call<Ilac> ilacTakipE(@Field("email") String email,
+                          @Field("ilacAdi") String ilacAdi,
+                          @Field("doz") String doz,
+                          @Field("desc") String desc);
+
+
+    @GET("ilactakipgetir")
+    Call<Ilac> ilacTakipG(@Query("email") String email);
+
+
+    @GET("ilactakipgetir")
+    Call<List<IlacList>> ilacTakipG2(@Query("email") String email);
+
+    @GET("ilactakipgetir")
+    Call<List<Ilac>> ilacTakipG3(@Query("email") String email);
 
 }

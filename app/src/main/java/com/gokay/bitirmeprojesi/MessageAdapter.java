@@ -80,7 +80,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         holder.mText.setText(chat.getMessage());
 
-        /*
+        //
 
         String mType=chat.getType();
 
@@ -103,14 +103,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         });
 
         if(mType.equals("text")){
-            holder.messageText.setText(chat.getMessage());
-            holder.messageImagee.setVisibility(View.INVISIBLE);
+            holder.mText.setText(chat.getMessage());
+            //holder.messageImagee.setVisibility(View.INVISIBLE);
         }
         else{
-            holder.messageText.setVisibility(View.INVISIBLE);
+            holder.mText.setVisibility(View.INVISIBLE);
 
         }
-        */
+        //
     }
 
 

@@ -61,7 +61,8 @@
             android:paddingTop="14dp"
             android:paddingRight="10dp"
             android:paddingBottom="12dp"
-            android:textColor="@color/darkBlue"/>
+            android:textColor="@color/darkBlue"
+            android:textColorHint="@color/darkBlue"/>
 
         <ImageButton
             android:id="@+id/chat_send_btn"

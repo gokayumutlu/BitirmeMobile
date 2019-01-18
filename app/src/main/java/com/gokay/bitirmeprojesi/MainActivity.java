@@ -3,8 +3,6 @@ package com.gokay.bitirmeprojesi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +12,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.gokay.bitirmeprojesi.m.Kullanici;
 import com.gokay.bitirmeprojesi.v.LoginActivity;
-import com.gokay.bitirmeprojesi.v.SignupActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -36,6 +32,7 @@ public class MainActivity extends AppCompatActivity{
     private Toolbar toolbar;
     private LinearLayout ll;
     private LinearLayout medicine_layout;
+    private LinearLayout gsd_linear;
     private String user_id;
     private String alici_name;
     public String alici_id;
@@ -48,11 +45,11 @@ public class MainActivity extends AppCompatActivity{
     //Kolaylık olması açısından öğretmen emaili ve firebase uid'si sağlandı.
     private String amail="farkliemail@outlook.com";
     private String aid="EBlKe7Zo3eVu3vIEkB8cNBdTp7s1";
-    private String alici_ad="farklı email";
+    private String alici_ad="Gökhan Umutsuz";
     //2
     private String amail2="nedenneden@gmail.com";
     private String aid2="ArsnUnmf2tYGEHhr9Zl0MUAIxJ62";
-    private String alici_ad2="neden çalışıyor";
+    private String alici_ad2="Gökay Umutlu";
 
     //Firabase
     private FirebaseAuth mAuth;
@@ -93,6 +90,7 @@ public class MainActivity extends AppCompatActivity{
 
         ll=findViewById(R.id.linear_message);
         medicine_layout=findViewById(R.id.linear_medicine);
+        gsd_linear=findViewById(R.id.linear_gsd);
         mAuth = FirebaseAuth.getInstance();
 
         user_id=mAuth.getCurrentUser().getUid();
@@ -112,8 +110,16 @@ public class MainActivity extends AppCompatActivity{
         medicine_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent medicine_layout=new Intent(MainActivity.this,IlacTakip.class);
+                Intent medicine_layout=new Intent(MainActivity.this, IlacTakipV.class);
                 startActivity(medicine_layout);
+            }
+        });
+
+        gsd_linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent goster=new Intent(MainActivity.this,IlacTakipO.class);
+                startActivity(goster);
             }
         });
 
