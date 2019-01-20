@@ -8,13 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.gokay.bitirmeprojesi.m.Ilac;
+
 import java.util.ArrayList;
 
 public class ListAdapt extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private ArrayList<String> alist=new ArrayList<String>();
+    private ArrayList<Ilac> alist=new ArrayList<Ilac>();
 
     public ListAdapt(Context context){
         mContext=context;
@@ -51,6 +53,16 @@ public class ListAdapt extends BaseAdapter {
         TextView ilacDoztv=itemView.findViewById(R.id.listIlacDoz);
         TextView ilacDesctv=itemView.findViewById(R.id.listIlacDesc);
 
+        String ilacadi=alist.get(i).getIlacAdi();
+        ilacAditv.setText(ilacadi);
+        String ilacDoz=alist.get(i).getDoz();
+        ilacDoztv.setText(ilacDoz);
+        String ilacDesc=alist.get(i).getDesc();
+        ilacDesctv.setText(ilacDesc);
         return itemView;
+    }
+
+    public void update(ArrayList<Ilac> ilaclist){
+        alist=ilaclist;
     }
 }

@@ -5,9 +5,11 @@ import com.gokay.bitirmeprojesi.m.Kullanici;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -69,10 +71,8 @@ public interface Api {
     Call<Ilac> ilacTakipG(@Query("email") String email);
 
 
-    @GET("ilactakipgetir")
-    Call<List<IlacList>> ilacTakipG2(@Query("email") String email);
 
     @GET("ilactakipgetir")
-    Call<List<Ilac>> ilacTakipG3(@Query("email") String email);
+    Call<ilacData> ilacTakipG3(@Query("email") String email);
 
 }

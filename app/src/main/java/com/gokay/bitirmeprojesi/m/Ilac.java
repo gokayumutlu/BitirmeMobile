@@ -5,9 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Ilac {
 
-    @SerializedName("email")
-    @Expose
-    private String email;
+
     @SerializedName("ilac_adi")
     @Expose
     private String ilacAdi;
@@ -24,20 +22,12 @@ public class Ilac {
 
     }
 
-    public Ilac(String email, String ilacAdi, String doz, String desc) {
-        this.email = email;
+    public Ilac(String ilacAdi, String doz, String desc) {
         this.ilacAdi = ilacAdi;
         this.doz = doz;
         this.desc = desc;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getIlacAdi() {
         return ilacAdi;
@@ -61,5 +51,14 @@ public class Ilac {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    @Override
+    public String toString() {
+        return "Ilac{" +
+                "ilacAdi='" + ilacAdi + '\'' +
+                ", doz='" + doz + '\'' +
+                ", desc='" + desc + '\'' +
+                '}';
     }
 }
