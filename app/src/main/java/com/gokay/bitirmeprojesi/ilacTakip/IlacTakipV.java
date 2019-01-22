@@ -1,4 +1,4 @@
-package com.gokay.bitirmeprojesi;
+package com.gokay.bitirmeprojesi.ilacTakip;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.gokay.bitirmeprojesi.m.Ilac;
-import com.gokay.bitirmeprojesi.m.Kullanici;
+import com.gokay.bitirmeprojesi.Api;
+import com.gokay.bitirmeprojesi.R;
+import com.gokay.bitirmeprojesi.ilacTakip.Ilac;
 import com.gokay.bitirmeprojesi.m.URL;
 import com.google.firebase.auth.FirebaseAuth;
 

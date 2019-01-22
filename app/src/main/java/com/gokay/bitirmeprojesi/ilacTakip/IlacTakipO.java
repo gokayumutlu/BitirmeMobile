@@ -1,16 +1,11 @@
-package com.gokay.bitirmeprojesi;
+package com.gokay.bitirmeprojesi.ilacTakip;
 
 import android.app.ListActivity;
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.gokay.bitirmeprojesi.m.Ilac;
+import com.gokay.bitirmeprojesi.R;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class IlacTakipO extends ListActivity{
 
@@ -35,7 +30,7 @@ public class IlacTakipO extends ListActivity{
         Log.d("when1","oncreate");
         //loadwA.loadData("farkliemail@outlook.com",this);
 
-        A a=new A(listAdapt,"farkliemail@outlook.com");
+        ilacAra a=new ilacAra(listAdapt,"farkliemail@outlook.com");
         a.func(this);
 
 

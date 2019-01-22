@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".duyuru.DuyuruO">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/duyuruOAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/duyuru_o_toolbar"
+            layout="@layout/app_bar_layout" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/duyuruOTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkBlue"
+            app:tabTextColor="#F0F3BD"></android.support.design.widget.TabLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/duyuruOVP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/duyuruOAppBar"></android.support.v4.view.ViewPager>
+
+</RelativeLayout>

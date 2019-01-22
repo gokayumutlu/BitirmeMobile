@@ -1,18 +1,20 @@
-package com.gokay.bitirmeprojesi;
+package com.gokay.bitirmeprojesi.ilacTakip;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.gokay.bitirmeprojesi.m.Ilac;
+import com.gokay.bitirmeprojesi.ilacTakip.Ilac;
+import com.gokay.bitirmeprojesi.ilacTakip.ListAdapt;
+import com.gokay.bitirmeprojesi.ilacTakip.LoadDataInterface;
+import com.gokay.bitirmeprojesi.ilacTakip.LoadIlacDataWithoutAsyncTask;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class A implements LoadDataInterface{
+public class ilacAra implements LoadDataInterface {
     private String email;
     private ListAdapt mAdapt;
 
-    public A(ListAdapt adapt, String email){
+    public ilacAra(ListAdapt adapt, String email){
         mAdapt=adapt;
         this.email=email;
     }

@@ -9,4 +9,5 @@
     <color name="darkBlue">#05668D</color>
     <color name="greeeen">#00A896</color>
     <color name="white">#FFFFFF</color>
+    <color name="lightBackground">#F0F3BD</color>
 </resources>

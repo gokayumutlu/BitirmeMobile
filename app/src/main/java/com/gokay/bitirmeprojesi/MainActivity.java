@@ -14,7 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.gokay.bitirmeprojesi.duyuru.DuyuruO;
+import com.gokay.bitirmeprojesi.ilacTakip.IlacTakipO;
+import com.gokay.bitirmeprojesi.ilacTakip.IlacTakipV;
 import com.gokay.bitirmeprojesi.m.Kullanici;
+import com.gokay.bitirmeprojesi.messaging.ChatActivity;
 import com.gokay.bitirmeprojesi.v.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity{
     private LinearLayout ll;
     private LinearLayout medicine_layout;
     private LinearLayout gsd_linear;
+    private LinearLayout anno_linear;
     private String user_id;
     private String alici_name;
     public String alici_id;
@@ -64,7 +69,7 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         SharedPreferences sharedPreferences=getSharedPreferences(MyPREFERENCES,Context.MODE_PRIVATE);
-        g_email=sharedPreferences.getString("email","rong");
+        g_email=sharedPreferences.getString("current_email","rong");
         //g_email=getIntent().getStringExtra("current_email");
 
         if (g_email.equals(amail)) {
@@ -91,6 +96,7 @@ public class MainActivity extends AppCompatActivity{
         ll=findViewById(R.id.linear_message);
         medicine_layout=findViewById(R.id.linear_medicine);
         gsd_linear=findViewById(R.id.linear_gsd);
+        anno_linear=findViewById(R.id.linear_anno);
         mAuth = FirebaseAuth.getInstance();
 
         user_id=mAuth.getCurrentUser().getUid();
@@ -98,7 +104,7 @@ public class MainActivity extends AppCompatActivity{
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent chat=new Intent(MainActivity.this,ChatActivity.class);
+                Intent chat=new Intent(MainActivity.this, ChatActivity.class);
                 chat.putExtra("alici_id",alici_id);
                 chat.putExtra("gonderen_id",user_id);
                 chat.putExtra("alici_ad",alici_name);
@@ -118,8 +124,16 @@ public class MainActivity extends AppCompatActivity{
         gsd_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goster=new Intent(MainActivity.this,IlacTakipO.class);
+                Intent goster=new Intent(MainActivity.this, IlacTakipO.class);
                 startActivity(goster);
+            }
+        });
+
+        anno_linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent anno_layout=new Intent(MainActivity.this, DuyuruO.class);
+                startActivity(anno_layout);
             }
         });
 

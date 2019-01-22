@@ -1,11 +1,13 @@
-package com.gokay.bitirmeprojesi.m;
+package com.gokay.bitirmeprojesi.ilacTakip;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Ilac {
 
-
+    @SerializedName("ogrenci")
+    @Expose
+    private String ogrenci;
     @SerializedName("ilac_adi")
     @Expose
     private String ilacAdi;
@@ -22,7 +24,8 @@ public class Ilac {
 
     }
 
-    public Ilac(String ilacAdi, String doz, String desc) {
+    public Ilac(String ogrenci,String ilacAdi, String doz, String desc) {
+        this.ogrenci=ogrenci;
         this.ilacAdi = ilacAdi;
         this.doz = doz;
         this.desc = desc;
@@ -53,12 +56,13 @@ public class Ilac {
         this.desc = desc;
     }
 
-    @Override
-    public String toString() {
-        return "Ilac{" +
-                "ilacAdi='" + ilacAdi + '\'' +
-                ", doz='" + doz + '\'' +
-                ", desc='" + desc + '\'' +
-                '}';
+    public String getOgrenci() {
+        return ogrenci;
     }
+
+    public void setOgrenci(String ogrenci) {
+        this.ogrenci = ogrenci;
+    }
+
+
 }

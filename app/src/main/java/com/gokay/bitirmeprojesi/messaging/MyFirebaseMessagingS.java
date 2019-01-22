@@ -1,9 +1,10 @@
-package com.gokay.bitirmeprojesi;
+package com.gokay.bitirmeprojesi.messaging;
 
 
 import android.app.NotificationManager;
 import android.support.v4.app.NotificationCompat;
 
+import com.gokay.bitirmeprojesi.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 

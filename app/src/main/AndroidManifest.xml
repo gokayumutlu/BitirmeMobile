@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".IlacTakipO"/>
+        <activity android:name=".duyuru.DuyuruO"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".ilacTakip.IlacTakipO" />
         <activity android:name=".v.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,18 +30,18 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Ogrenciler" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".messaging.ChatActivity"
             android:label="@string/title_activity_chat"
             android:parentActivityName=".MainActivity" />
 
-        <service android:name=".MyFirebaseMessagingS">
+        <service android:name=".messaging.MyFirebaseMessagingS">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
         <activity
-            android:name=".IlacTakipV"
+            android:name=".ilacTakip.IlacTakipV"
             android:parentActivityName=".MainActivity" />
     </application>
 

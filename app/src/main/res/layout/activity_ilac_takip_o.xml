@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IlacTakipO"
+    tools:context=".ilacTakip.IlacTakipO"
     android:background="#F0F3BD">
 
     <include
@@ -23,7 +23,9 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/medicine_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/medicine_toolbar"
+        android:divider="@color/anotherBlue"
+        android:dividerHeight="1sp"/>
 
     <TextView
         android:id="@android:id/empty"

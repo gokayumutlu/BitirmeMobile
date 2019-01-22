@@ -1,15 +1,15 @@
 package com.gokay.bitirmeprojesi;
 
-import com.gokay.bitirmeprojesi.m.Ilac;
+import com.gokay.bitirmeprojesi.duyuru.Duyuru;
+import com.gokay.bitirmeprojesi.ilacTakip.Ilac;
+import com.gokay.bitirmeprojesi.ilacTakip.ilacData;
 import com.gokay.bitirmeprojesi.m.Kullanici;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -74,5 +74,10 @@ public interface Api {
 
     @GET("ilactakipgetir")
     Call<ilacData> ilacTakipG3(@Query("email") String email);
+
+    @FormUrlEncoded
+    @POST("duyuruesinif")
+    Call<Duyuru> duyuruESinif(@Field("ogretmen_email") String email,
+                              @Field("icerik") String icerik);
 
 }

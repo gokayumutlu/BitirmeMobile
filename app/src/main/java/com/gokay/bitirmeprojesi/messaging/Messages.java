@@ -1,4 +1,4 @@
-package com.gokay.bitirmeprojesi;
+package com.gokay.bitirmeprojesi.messaging;
 
 public class Messages {
     private String message,type,from;

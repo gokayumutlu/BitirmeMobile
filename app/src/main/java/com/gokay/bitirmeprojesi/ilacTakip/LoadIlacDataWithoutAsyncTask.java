@@ -1,7 +1,12 @@
-package com.gokay.bitirmeprojesi;
+package com.gokay.bitirmeprojesi.ilacTakip;
 
 import android.util.Log;
-import com.gokay.bitirmeprojesi.m.Ilac;
+
+import com.gokay.bitirmeprojesi.Api;
+import com.gokay.bitirmeprojesi.ilacTakip.Ilac;
+import com.gokay.bitirmeprojesi.ilacTakip.ListAdapt;
+import com.gokay.bitirmeprojesi.ilacTakip.LoadDataInterface;
+import com.gokay.bitirmeprojesi.ilacTakip.ilacData;
 import com.gokay.bitirmeprojesi.m.URL;
 import java.util.ArrayList;
 import retrofit2.Call;
@@ -45,7 +50,7 @@ public class LoadIlacDataWithoutAsyncTask{
 
                     ArrayList<Ilac> ilacarray=response.body().ilacData;
                     for(int i=0;i<ilacarray.size();i++){
-                        Log.d("ilac_list","ilac_adi:"+ilacarray.get(i).getIlacAdi()+"\n adet:"+ilacarray.get(i).getDoz()+"\n aciklama:"+ilacarray.get(i).getDesc());
+                        Log.d("ilac_list","ogrenci:"+ilacarray.get(i).getOgrenci()+"\n ilac_adi:"+ilacarray.get(i).getIlacAdi()+"\n adet:"+ilacarray.get(i).getDoz()+"\n aciklama:"+ilacarray.get(i).getDesc());
                     }
 
                     callback.callList(ilacarray);

@@ -1,38 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="3dp">
 
+    <!-- id doz2 right doz -->
     <TextView
-        android:id="@+id/listIlacAdi"
+        android:id="@+id/listIlacDoz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/listIlacAdi"
+        android:text="ilac doz"
+        android:textColor="@color/anotherBlue"
+        android:textSize="16sp" />
+
+    <!-- id adi  -->
+    <TextView
+        android:id="@+id/listIlacOgrenci"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:text="A List item title"
+        android:textColor="@color/anotherBlue"
         android:textSize="16sp"
         android:textStyle="bold" />
 
+    <!-- id doz top adi right adi -->
     <TextView
-        android:id="@+id/listIlacDoz"
+        android:id="@+id/listIlacAdi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/listIlacAdi"
-        android:layout_toRightOf="@+id/listIlacAdi"
+        android:layout_alignTop="@+id/listIlacOgrenci"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/listIlacOgrenci"
         android:text="A List item title"
+        android:textColor="@color/anotherBlue"
         android:textSize="16sp"
         android:textStyle="bold" />
 
+    <!-- id desc below doz right adi -->
     <TextView
         android:id="@+id/listIlacDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/listIlacDoz"
+        android:layout_below="@+id/listIlacAdi"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/listIlacOgrenci"
         android:maxLines="4"
-        android:layout_toRightOf="@+id/listIlacAdi"
         android:text="The List item description"
+        android:textColor="@color/anotherBlue"
         android:textSize="14sp" />
 
 </RelativeLayout>

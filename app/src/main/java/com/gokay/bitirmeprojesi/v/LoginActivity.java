@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                 String emailT=email.getText().toString();
                 String sifreT=sifre.getText().toString();
                 SharedPreferences.Editor editor=sharedPreferences.edit();
-                editor.putString("email",emailT);
+                editor.putString("current_email",emailT);
                 editor.apply();
                 if(!TextUtils.isEmpty(emailT) || !TextUtils.isEmpty(sifreT)){
                     //Benim giriş işlemim

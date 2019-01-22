@@ -1,4 +1,4 @@
-package com.gokay.bitirmeprojesi;
+package com.gokay.bitirmeprojesi.ilacTakip;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,8 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.gokay.bitirmeprojesi.m.Ilac;
+import com.gokay.bitirmeprojesi.R;
 
 import java.util.ArrayList;
 
@@ -48,11 +47,13 @@ public class ListAdapt extends BaseAdapter {
         } else {
             itemView = (RelativeLayout) view;
         }
-
+        TextView ilacOgrencitv=itemView.findViewById(R.id.listIlacOgrenci);
         TextView ilacAditv=itemView.findViewById(R.id.listIlacAdi);
         TextView ilacDoztv=itemView.findViewById(R.id.listIlacDoz);
         TextView ilacDesctv=itemView.findViewById(R.id.listIlacDesc);
 
+        String ilacOgrenci=alist.get(i).getOgrenci();
+        ilacOgrencitv.setText(ilacOgrenci);
         String ilacadi=alist.get(i).getIlacAdi();
         ilacAditv.setText(ilacadi);
         String ilacDoz=alist.get(i).getDoz();
@@ -64,5 +65,6 @@ public class ListAdapt extends BaseAdapter {
 
     public void update(ArrayList<Ilac> ilaclist){
         alist=ilaclist;
+        notifyDataSetChanged();
     }
 }
