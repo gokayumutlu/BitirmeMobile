@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/veli_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/blue_user" />
+
+    <TextView
+        android:id="@+id/veli_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/veli_image"
+        android:text="veli_name"
+        android:textSize="20sp"
+        android:textColor="@color/darkBlue"/>
+
+    <TextView
+        android:id="@+id/veli_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/veli_name"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="-25dp"
+        android:layout_toEndOf="@id/veli_image"
+        android:text="veli_email"
+        android:textSize="13sp"
+        android:textColor="@color/darkBlue"/>
+
+</RelativeLayout>

@@ -19,6 +19,7 @@ import com.gokay.bitirmeprojesi.ilacTakip.IlacTakipO;
 import com.gokay.bitirmeprojesi.ilacTakip.IlacTakipV;
 import com.gokay.bitirmeprojesi.m.Kullanici;
 import com.gokay.bitirmeprojesi.messaging.ChatActivity;
+import com.gokay.bitirmeprojesi.messaging.ChatVeliList;
 import com.gokay.bitirmeprojesi.v.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -104,12 +105,16 @@ public class MainActivity extends AppCompatActivity{
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Intent chat=new Intent(MainActivity.this, ChatActivity.class);
                 chat.putExtra("alici_id",alici_id);
                 chat.putExtra("gonderen_id",user_id);
                 chat.putExtra("alici_ad",alici_name);
                 startActivity(chat);
+                */
 
+                Intent veliList=new Intent(MainActivity.this,ChatVeliList.class);
+                startActivity(veliList);
             }
         });
 

@@ -1,6 +1,8 @@
 package com.gokay.bitirmeprojesi;
 
 import com.gokay.bitirmeprojesi.duyuru.Duyuru;
+import com.gokay.bitirmeprojesi.duyuru.Veli;
+import com.gokay.bitirmeprojesi.duyuru.VeliData;
 import com.gokay.bitirmeprojesi.ilacTakip.Ilac;
 import com.gokay.bitirmeprojesi.ilacTakip.ilacData;
 import com.gokay.bitirmeprojesi.m.Kullanici;
@@ -75,9 +77,24 @@ public interface Api {
     @GET("ilactakipgetir")
     Call<ilacData> ilacTakipG3(@Query("email") String email);
 
+
     @FormUrlEncoded
     @POST("duyuruesinif")
     Call<Duyuru> duyuruESinif(@Field("ogretmen_email") String email,
                               @Field("icerik") String icerik);
+
+
+    @GET("sinifvgetir")
+    Call<VeliData> sinifVGetir(@Query("email") String email);
+
+
+    @FormUrlEncoded
+    @POST("duyuruekullanici")
+    Call<Duyuru> duyuruEKullanici(@Field("ogretmen_email") String oemail,
+                                  @Field("veli_email") String vemail,
+                                  @Field("icerik") String icerik);
+
+
+
 
 }
