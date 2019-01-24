@@ -11,11 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".messaging.ChatVeliList"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".gsd.GsdOgretmen"></activity>
+        <activity android:name=".gsd.gsdVeli" />
+        <activity
+            android:name=".messaging.ChatVeliList"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".duyuru.DuyuruO"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".ilacTakip.IlacTakipO" />
         <activity android:name=".v.LoginActivity">
             <intent-filter>

@@ -3,6 +3,8 @@ package com.gokay.bitirmeprojesi;
 import com.gokay.bitirmeprojesi.duyuru.Duyuru;
 import com.gokay.bitirmeprojesi.duyuru.Veli;
 import com.gokay.bitirmeprojesi.duyuru.VeliData;
+import com.gokay.bitirmeprojesi.gsd.Gsd;
+import com.gokay.bitirmeprojesi.gsd.OgrenciData;
 import com.gokay.bitirmeprojesi.ilacTakip.Ilac;
 import com.gokay.bitirmeprojesi.ilacTakip.ilacData;
 import com.gokay.bitirmeprojesi.m.Kullanici;
@@ -94,7 +96,16 @@ public interface Api {
                                   @Field("veli_email") String vemail,
                                   @Field("icerik") String icerik);
 
+    @GET("sinifogetir")
+    Call<OgrenciData> sinifOGetir(@Query("email") String email);
 
+
+    @FormUrlEncoded
+    @POST("gsdekle")
+    Call<Gsd> gsdEkle(@Field("ogretmen_email") String oemail,
+                      @Field("ogrenci_id") int ogrenci_id,
+                      @Field("uyku") String uyku,
+                      @Field("yemek") String yemek);
 
 
 }

@@ -1,5 +1,6 @@
 package com.gokay.bitirmeprojesi;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.gokay.bitirmeprojesi.duyuru.DuyuruO;
+import com.gokay.bitirmeprojesi.gsd.GsdOgretmen;
 import com.gokay.bitirmeprojesi.ilacTakip.IlacTakipO;
 import com.gokay.bitirmeprojesi.ilacTakip.IlacTakipV;
 import com.gokay.bitirmeprojesi.m.Kullanici;
@@ -129,8 +131,10 @@ public class MainActivity extends AppCompatActivity{
         gsd_linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goster=new Intent(MainActivity.this, IlacTakipO.class);
-                startActivity(goster);
+                //Intent goster=new Intent(MainActivity.this, IlacTakipO.class);
+                //startActivity(goster);
+                Intent gsd=new Intent(MainActivity.this, GsdOgretmen.class);
+                startActivity(gsd);
             }
         });
 

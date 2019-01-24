@@ -1,6 +1,5 @@
 package com.gokay.bitirmeprojesi.duyuru;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,17 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.gokay.bitirmeprojesi.Api;
 import com.gokay.bitirmeprojesi.R;
 import com.gokay.bitirmeprojesi.ilacTakip.Ilac;
 import com.gokay.bitirmeprojesi.ilacTakip.ilacData;
 import com.gokay.bitirmeprojesi.m.URL;
 import com.google.firebase.auth.FirebaseAuth;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -157,6 +153,7 @@ public class VeliDFragment extends Fragment implements LoadVeliDataInterface{
                                         else{
                                             Toast.makeText(context,"Duyuru gönderme başarılı!",Toast.LENGTH_LONG).show();
                                             Log.d("duyuru gonder basarili","başarılı");
+                                            icerikText.setText("");
                                         }
 
                                     }
